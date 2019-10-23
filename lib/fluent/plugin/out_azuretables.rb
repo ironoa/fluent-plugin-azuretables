@@ -33,6 +33,8 @@ module Fluent
       unless @row_keys.nil?
         @row_key_array = @row_keys.split(',')
       end
+
+      @row_key_cnt = 0
     end
 
     # connect azure table storage service
@@ -79,19 +81,24 @@ module Fluent
       partition_keys = []
       row_keys = []
       record.each_pair do |name, val|
-        if @partition_key_array.include?(name)
+        if @partition_key_array && @partition_key_array.include?(name)
           partition_keys << val
           record.delete(name)
-        elsif @row_key_array.include?(name)
+        elsif @row_key_array && @row_key_array.include?(name)
           row_keys << val
           record.delete(name)
         end
       end
+      row_keys << Time.now.getutc.to_i
+      row_keys << @row_key_cnt
+      @row_key_cnt += 1
 
       entity = Hash.new
       entity['partition_key'] = partition_keys.join(@key_delimiter)
       entity['row_key'] = row_keys.join(@key_delimiter)
-      entity['entity_values'] = record
+      entity['entity_values'] = {
+        "message": record['message'].encode('ASCII')
+      }
       entity.to_msgpack
     end
 
