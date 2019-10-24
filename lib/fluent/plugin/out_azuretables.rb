@@ -89,6 +89,7 @@ module Fluent
           record.delete(name)
         end
       end
+      partition_keys << Time.now.strftime("%Y%m%d")
       row_keys << Time.now.getutc.to_i
       row_keys << @row_key_cnt
       @row_key_cnt += 1
