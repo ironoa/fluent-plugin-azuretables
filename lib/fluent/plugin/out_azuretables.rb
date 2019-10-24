@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'azure'
-require 'msgpack'
+require 'time'
 
 module Fluent
   class AzuretablesOutput < BufferedOutput
