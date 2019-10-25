@@ -45,17 +45,13 @@ module Fluent
         Azure.config.storage_access_key = @access_key
       end
 
-      detach_multi_process do
-        super
-
-        begin
-          @azure_table_service = Azure::Table::TableService.new
-          # create table if not exits
-          @azure_table_service.create_table(@table) if !table_exists?(@table) && @create_table_if_not_exists
-        rescue Exception => e
-          log.error e
-          exit!
-        end
+      begin
+        @azure_table_service = Azure::Table::TableService.new
+        # create table if not exits
+        @azure_table_service.create_table(@table) if !table_exists?(@table) && @create_table_if_not_exists
+      rescue Exception => e
+        log.error e
+        exit!
       end
     end
 
@@ -97,9 +93,7 @@ module Fluent
       entity = Hash.new
       entity['partition_key'] = partition_keys.join(@key_delimiter)
       entity['row_key'] = row_keys.join(@key_delimiter)
-      entity['entity_values'] = {
-        "message": record['message'].encode('ASCII')
-      }
+      entity['entity_values'] = record
       entity.to_msgpack
     end
 
