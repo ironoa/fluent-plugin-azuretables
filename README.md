@@ -19,6 +19,9 @@ fluent-gem install fluent-plugin-azuretables
   create_table_if_not_exists false
   partition_keys test-partition-key-01,test-partition-key-02
   row_keys rk1 test-row-key-01,test-row-key-02
+  add_time_to_partition_key true
+  add_time_row_key true
+  add_uuid_to_row_key true
   key_delimiter __
 </match>
 ```
@@ -32,8 +35,11 @@ fluent-gem install fluent-plugin-azuretables
 * partition_keys (optional) - A string with comma delimiter.List of properties which are used to create a composite __PartitionKey__.
 * row_keys (optional) - A string with comma delimiter.List of properties which are used to create a composite __RowKey__.
 * key_delimiter (optional) - A string becomes delimiter of partition key and row key in table. Default: "__" (underscores x2)
+* add_uuid_to_row_key (optional) - Adds uuid to row key to try to make partition_key and row_key unique across , in case of same partition_key is used across servers.  Default: __true__.
+* add_time_to_partition_key (optional) - Adds current time to partition_key. Default: __true__
+* add_time_to_row_key (optional) - Adds current time to row_key. Default: __true__
 
 ## TODO
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at [https://github.com/heocoi/fluent-plugin-azuretables](https://github.com/heocoi/fluent-plugin-azuretables).
+Bug reports and pull requests are welcome on GitHub at [https://github.com/VikramNisarga/fluent-plugin-azuretables](https://github.com/VikramNisarga/fluent-plugin-azuretables).

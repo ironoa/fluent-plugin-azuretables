@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-azure-storage-table"
-  spec.version       = "0.0.4"
-  spec.authors       = ["Donny Xia"]
-  spec.email         = ["xiadong.main@gmail.com"]
+  spec.version       = "0.0.6"
+  spec.authors       = ["Vikram"]
+  spec.email         = ["vikramnisarga1@gmail.com"]
   spec.summary       = "Fluentd plugin for Azure Tables Storage."
-  spec.description   = "Fluentd plugin to add event record into Azure Tables Storage. This plugin is only for internal purpose and isn't for general usage"
-  spec.homepage      = "https://github.com/Shell32-Natsu/fluent-plugin-azuretables"
+  spec.description   = "Fluentd plugin to add event record into Azure Tables Storage"
+  spec.homepage      = "https://https://github.com/VikramNisarga/fluent-plugin-azuretables"
   spec.licenses      = ["MIT"]
   spec.has_rdoc      = false
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "fluentd", '>= 0.14.10'
-  spec.add_dependency "azure", '~> 0'
-  spec.add_development_dependency "bundler", "~> 1.14"
+  spec.add_dependency "azure-storage-table", '~> 2.0'
+  spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "rake", "~> 12.0"
 end
