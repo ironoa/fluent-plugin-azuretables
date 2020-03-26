@@ -3,7 +3,7 @@
 ## Installation
 
 ```ruby
-fluent-gem install fluent-plugin-azuretables
+fluent-gem install fluent-plugin-azure-table
 ```
 
 ## Usage
