@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-azure-table"
-  spec.version       = "0.0.2"
+  spec.version       = "0.0.2   "
   spec.authors       = ["Vikram"]
   spec.email         = ["vikramnisarga1@gmail.com"]
   spec.summary       = "Fluentd plugin for Azure Tables Storage."
   spec.description   = "Fluentd plugin to add event record into Azure Tables Storage"
-  spec.homepage      = "https://https://github.com/VikramNisarga/fluent-plugin-azuretables"
+  spec.homepage      = "https://github.com/VikramNisarga/fluent-plugin-azuretables"
   spec.licenses      = ["MIT"]
   spec.has_rdoc      = false
 
