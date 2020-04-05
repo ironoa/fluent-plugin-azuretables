@@ -23,7 +23,7 @@ module Fluent
     config_param :row_keys, :string, :default => nil
     config_param :add_uuid_to_row_key, :bool, :default => true
     config_param :add_time_to_partition_key, :bool, :default => true
-    config_param :add_time_row_key, :bool, :default => true
+    config_param :add_time_to_row_key, :bool, :default => true
 
     # This method is called before starting.
     # 'conf' is a Hash that includes configuration parameters.
@@ -88,7 +88,7 @@ module Fluent
       if @add_time_to_partition_key
         partition_keys << Time.now.strftime("%Y%m%d")
       end
-      if @add_time_to_partition_key
+      if @add_time_to_row_key
         row_keys << Time.now.getutc.to_i
       end
       if @add_uuid_to_row_key
