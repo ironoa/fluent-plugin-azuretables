@@ -20,7 +20,7 @@ fluent-gem install fluent-plugin-azure-table
   partition_keys test-partition-key-01,test-partition-key-02
   row_keys rk1 test-row-key-01,test-row-key-02
   add_time_to_partition_key true
-  add_time_row_key true
+  add_time_to_row_key true
   add_uuid_to_row_key true
   key_delimiter __
 </match>
